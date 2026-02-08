@@ -1,0 +1,56 @@
+.bottomBT {
+  padding: 1.2rem;
+  font-size: 1.2rem;
+  filter: brightness(92%);
+  margin-top: 2rem;
+  margin-right: 1rem;
+  border-radius: 1rem;
+  border: 2px solid transparent;
+  min-width: 8rem;
+}
+
+.bottomBT:hover {
+  filter: brightness(75%);
+}
+
+.ansers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1.8rem;
+  border-radius: 1rem;
+  margin-top: 2rem;
+}
+
+.anser {
+  padding-bottom: 1.5rem;
+  padding-top: 1.5rem;
+  font-size: 1.5rem;
+  filter: brightness(92%);
+  border-radius: 1rem;
+  border: 2px solid transparent;
+}
+.anser:hover {
+  filter: brightness(75%);
+}
+
+.container {
+  padding: 1rem;
+  width: fit-content;
+  border-radius: 1rem;
+  background-color: #fff;
+  box-shadow: 0 0 0 2px rgba(197, 188, 188, 0.3);
+}
+.heading {
+  letter-spacing: 0.15rem;
+  font-size: 5rem;
+  width: fit-content;
+}
+
+.green {
+  background-color: rgb(53, 223, 87);
+}
+
+.red {
+  background-color: rgb(243, 15, 15);
+}
