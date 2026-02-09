@@ -5,6 +5,7 @@ const fragenListe = [
     antwort2: "Berlin",
     antwort3: "Hannover",
     antwort4: "Hamburg",
+    richtigeAntwort: "Berlin",
   },
   {
     frage: "Was ist die Hauptstadt von Frankreich?",
@@ -12,6 +13,7 @@ const fragenListe = [
     antwort2: "Marseille",
     antwort3: "Paris",
     antwort4: "Bordeaux",
+    richtigeAntwort: "Paris",
   },
 ];
 
@@ -23,51 +25,51 @@ let anser1Text;
 let anser2Text;
 let anser3Text;
 let anser4Text;
+let currentQuestion;
 
-let a = 0;
+let questionIndex = 0;
 
 function nextQuestion() {
-  if (a === 1) {
-    a = 0;
-  } else {
-    a = 1;
+  if (questionIndex >= fragenListe.length) {
+    questionIndex = 0;
   }
 
-  let frage1 = fragenListe[a];
+  currentQuestion = fragenListe[questionIndex];
+  questionIndex += 1;
 
   let container = document.createElement("div");
   container.classList.add("container");
 
   let heading = document.createElement("span");
-  let headingText = document.createTextNode(frage1.frage);
+  let headingText = document.createTextNode(currentQuestion.frage);
   heading.appendChild(headingText);
   heading.classList.add("heading");
 
   let ansers = document.createElement("div");
 
   anser1 = document.createElement("button");
-  anser1Text = document.createTextNode(frage1.antwort1);
+  anser1Text = document.createTextNode(currentQuestion.antwort1);
   anser1.appendChild(anser1Text);
   anser1.classList.add("anser");
   anser1.id = "first";
   anser1.setAttribute("onclick", `clickAnser( "first")`);
 
   anser2 = document.createElement("button");
-  anser2Text = document.createTextNode(frage1.antwort2);
+  anser2Text = document.createTextNode(currentQuestion.antwort2);
   anser2.appendChild(anser2Text);
   anser2.classList.add("anser");
   anser2.id = "second";
   anser2.setAttribute("onclick", `clickAnser("second")`);
 
   anser3 = document.createElement("button");
-  anser3Text = document.createTextNode(frage1.antwort3);
+  anser3Text = document.createTextNode(currentQuestion.antwort3);
   anser3.appendChild(anser3Text);
   anser3.classList.add("anser");
   anser3.id = "third";
   anser3.setAttribute("onclick", `clickAnser("third")`);
 
   anser4 = document.createElement("button");
-  anser4Text = document.createTextNode(frage1.antwort4);
+  anser4Text = document.createTextNode(currentQuestion.antwort4);
   anser4.appendChild(anser4Text);
   anser4.classList.add("anser");
   anser4.id = "fourth";
@@ -90,22 +92,13 @@ function nextQuestion() {
 }
 
 function solution() {
-  if (anser1Text.nodeValue === "Berlin" || anser1Text.nodeValue === "Paris") {
+  if (anser1Text.nodeValue === currentQuestion.richtigeAntwort) {
     anser1.classList.add("green");
-  } else if (
-    anser2Text.nodeValue === "Berlin" ||
-    anser2Text.nodeValue === "Paris"
-  ) {
+  } else if (anser2Text.nodeValue === currentQuestion.richtigeAntwort) {
     anser2.classList.add("green");
-  } else if (
-    anser3Text.nodeValue === "Berlin" ||
-    anser3Text.nodeValue === "Paris"
-  ) {
+  } else if (anser3Text.nodeValue === currentQuestion.richtigeAntwort) {
     anser3.classList.add("green");
-  } else if (
-    anser4Text.nodeValue === "Berlin" ||
-    anser4Text.nodeValue === "Paris"
-  ) {
+  } else if (anser4Text.nodeValue === currentQuestion.richtigeAntwort) {
     anser4.classList.add("green");
   }
 }
@@ -115,29 +108,25 @@ function clickAnser(id) {
 
   if (
     (id === "first") &
-    (anser1Text.nodeValue !== "Berlin") &
-    (anser1Text.nodeValue !== "Paris")
+    (anser1Text.nodeValue !== currentQuestion.richtigeAntwort)
   ) {
     anser1.classList.add("red");
     alert("Antwort ist falsch");
   } else if (
     (id === "second") &
-    (anser2Text.nodeValue !== "Berlin") &
-    (anser2Text.nodeValue !== "Paris")
+    (anser2Text.nodeValue !== currentQuestion.richtigeAntwort)
   ) {
     anser2.classList.add("red");
     alert("Antwort ist falsch");
   } else if (
     (id === "third") &
-    (anser3Text.nodeValue !== "Berlin") &
-    (anser3Text.nodeValue !== "Paris")
+    (anser3Text.nodeValue !== currentQuestion.richtigeAntwort)
   ) {
     anser3.classList.add("red");
     alert("Antwort ist falsch");
   } else if (
     (id === "fourth") &
-    (anser4Text.nodeValue !== "Berlin") &
-    (anser4Text.nodeValue !== "Paris")
+    (anser4Text.nodeValue !== currentQuestion.richtigeAntwort)
   ) {
     anser4.classList.add("red");
     alert("Antwort ist falsch");
