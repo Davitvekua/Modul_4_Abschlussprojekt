@@ -11,12 +11,9 @@ const fragenListe = [
   },
 ];
 
-let anser;
-let anserText;
-
 function createAnsers(anserNominal) {
-  anser = document.createElement("button");
-  anserText = document.createTextNode(anserNominal);
+  const anser = document.createElement("button");
+  const anserText = document.createTextNode(anserNominal);
   anser.appendChild(anserText);
   anser.classList.add("anser");
   anser.id = anserText.nodeValue;
@@ -45,8 +42,8 @@ function nextQuestion() {
   let ansers = document.createElement("div");
 
   currentQuestion.antworten.forEach((a) => {
-    createAnsers(a);
-    ansers.appendChild(anser);
+    const createdAnser = createAnsers(a);
+    ansers.appendChild(createdAnser);
   });
 
   ansers.classList.add("ansers");
