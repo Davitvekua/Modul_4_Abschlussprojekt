@@ -52,7 +52,7 @@ function nextQuestion() {
   container.appendChild(ansers);
 
   document.getElementById("test").replaceChildren(container);
-  anser.classList.remove("green");
+  // anser.classList.remove("green");
 }
 
 function solution() {
